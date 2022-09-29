@@ -23,6 +23,7 @@ export const useLogin = () => {
         throw new Error("Could not complete signup");
       }
       const user = res.user;
+      setIsPending(false)
       startRegister({
         name: user.name,
         email: user.email,
@@ -36,24 +37,9 @@ export const useLogin = () => {
     }
   };
 
-  const loginGithub = async () => {
-    try {
-      const res = await signInWithPopup(auth, provider);
-      if (!res) {
-        throw new Error("Could not complete signup");
-      }
-      const user = res.user;
-      startLogin({
-        email: user.email,
-        password: user.uid,
-      });
-  
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const registreGoogle = async () => {
+    setError(null);
+    setIsPending(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
      
@@ -61,6 +47,7 @@ export const useLogin = () => {
         throw new Error("Could not complete signup");
       }
       const user = result.user;
+      setIsPending(false)
       startRegister({
         name: user.name,
         email: user.email,
@@ -70,10 +57,38 @@ export const useLogin = () => {
    
     } catch (error) {
       console.log(error);
+      setError(error.message);
+      setIsPending(false);
     }
   };
 
+  const loginGithub = async () => {
+    setError(null);
+    setIsPending(true);
+    try {
+      const res = await signInWithPopup(auth, provider);
+      if (!res) {
+        throw new Error("Could not complete signup");
+      }
+      const user = res.user;
+      setIsPending(false)
+      startLogin({
+        email: user.email,
+        password: user.uid,
+      });
+  
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+      setIsPending(false);
+    }
+  };
+
+  
+
   const loginGoogle = async () => {
+    setError(null);
+    setIsPending(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
 
@@ -89,6 +104,8 @@ export const useLogin = () => {
    
     } catch (error) {
       console.log(error);
+      setError(error.message);
+      setIsPending(false);
     }
   };
 
