@@ -12,7 +12,7 @@ const registerFormFields = {
 
 export const RegisterPage = () => {
 
-  const {registerGithub,registreGoogle  } = useLogin();
+  const {registerGithub,registreGoogle,isPending  } = useLogin();
   const { errorMessage, startRegister } = useAuthStore();
   const {
     registerEmail,
@@ -79,8 +79,8 @@ export const RegisterPage = () => {
         <p className="text-2">o continuar con estos perfiles sociales</p>
         <div className="continer-icon">
           <button className="icon-style" onClick={registerGithub}>
-          <i className="fa-brands fa-github"></i>
-           
+          
+          {isPending ? "Loading..." : <i className="fa-brands fa-github"></i>}
           </button>
           <button className="icon-style" onClick={ registreGoogle  }>
             <i className="fa-brands fa-google"></i>

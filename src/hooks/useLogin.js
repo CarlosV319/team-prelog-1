@@ -5,13 +5,18 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { useAuthStore } from "../hooks";
+import { useState } from "react";
 
 export const useLogin = () => {
+  const [error, setError] = useState(false);
+  const [isPending, setIsPending] = useState(false);
   const provider = new GithubAuthProvider();
   const { startRegister, startLogin } = useAuthStore();
   const googleProvider = new GoogleAuthProvider();
 
   const registerGithub = async () => {
+    setError(null);
+    setIsPending(true);
     try {
       const res = await signInWithPopup(auth, provider);
       if (!res) {
@@ -26,6 +31,8 @@ export const useLogin = () => {
       });
     } catch (error) {
       console.log(error);
+      setError(error.message);
+      setIsPending(false);
     }
   };
 
@@ -74,6 +81,7 @@ export const useLogin = () => {
         throw new Error("Could not complete signup");
       }
       const user = result.user;
+      setIsPending(false)
       startLogin({
         email: user.email,
         password: user.uid,
@@ -84,5 +92,5 @@ export const useLogin = () => {
     }
   };
 
-  return { registerGithub, loginGithub, registreGoogle, loginGoogle };
+  return { registerGithub, loginGithub, registreGoogle, loginGoogle,isPending };
 };
