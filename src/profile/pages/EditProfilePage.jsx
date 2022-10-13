@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useForm } from '../../hooks';
+import { useForm, useProfileStore,useAuthStore } from '../../hooks';
 import { Link } from 'react-router-dom';
-import { useProfileStore } from "../../hooks/useProfileStore";
-import { useAuthStore } from "../../hooks";
 import '../../css/stylesc.css' 
 
 const formFields = {
@@ -71,7 +69,7 @@ await updateUserProfile( formState );
           <i className=" icon-t fa-solid fa-angle-left"></i>Atrás
         </Link>
       </div>
-      <div className="container">
+      <div className="container-edit">
         <div className="container-perfil">
           <div className="width-p">
             <p className="text">Cambiar información</p>
@@ -79,7 +77,7 @@ await updateUserProfile( formState );
               Los cambios se reflejarán en todos los servicios
             </p>
 
-            <form onSubmit={onSaveProfileChanges}>
+            <form className='form-edit' onSubmit={onSaveProfileChanges}>
               <div className="div-photo">
                { avatar ? <img src={avatar} alt="foto de perfil" /> :
                 <i className="fa-solid fa-user-secret size"></i>}
@@ -109,7 +107,6 @@ await updateUserProfile( formState );
               <div>
                 <label className="label" htmlFor="biografía">Biografía</label>
                 <textarea
-                  maxlength="65" 
                   className="biografia"
                   type="text"
                   id="biografía"

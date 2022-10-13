@@ -17,6 +17,19 @@
   justify-content: center;
   margin-bottom: 3rem;
 }
+@media (max-width: 620px) {
+  .container-profile-date{
+    width: 85%;
+  }
+}
+@media (max-width: 490px) {
+  .container-profile-date{
+    width: 95%;
+  }
+  .font-c{
+    width: 60%;
+  }
+}
 .continer-profile-1 {
   width: 100%;
 }
@@ -68,6 +81,10 @@ p.font {
   left: 8rem;
   top: -1rem;
 }
+.btn-edit:hover{
+color: var(--color-primario);
+background-color: var(--btn-logout);
+}
 
 .btn-logout {
   height: 15px;
@@ -86,13 +103,7 @@ p.font {
   cursor: pointer;
 }
 
-.width-p {
-  width: 70%;
-}
 
-form {
-  width: var(--width-input);
-}
 form input {
   border: none;
 }

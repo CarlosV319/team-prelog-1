@@ -1,7 +1,6 @@
 import { useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { useLogin } from "../../hooks/useLogin";
-import { useForm, useAuthStore } from '../../hooks';
+import { useForm, useAuthStore, useLogin } from '../../hooks';
 import '../../css/LoginPage.css' 
 
 
@@ -35,7 +34,7 @@ export const LoginPage = () => {
     }, [ errorMessage ])
 
     return (
-        <div className="container">
+        <div className="container-loginn">
             <div className="container-login">
                 <div className='group-form'>
                     <p className='login-title'>Inicio de sesión</p>

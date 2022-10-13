@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useProfileStore } from '../../hooks/useProfileStore';
 import { Link } from 'react-router-dom';
 import '../../css/ProfilePage.css' 
-import { useAuthStore } from "../../hooks";
+import { useAuthStore, useProfileStore } from "../../hooks";
 
 
 export const ProfilePage = () => {

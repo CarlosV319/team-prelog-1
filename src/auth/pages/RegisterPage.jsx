@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useLogin } from "../../hooks/useLogin";
 import Swal from 'sweetalert2';
 import '../../css/stylesc.css' 
-import { useForm, useAuthStore } from '../../hooks';
+import { useForm, useAuthStore, useLogin  } from '../../hooks';
 
 const registerFormFields = {
   registerEmail: "",
@@ -34,7 +33,7 @@ export const RegisterPage = () => {
   }, [errorMessage]);
 
   return (
-    <div className="container">
+    <div className="container-reg">
       <div className="container-register">
         <h4>Únase a miles de personas de todo el mundo</h4>
         <p className="sub-text">
