@@ -162,7 +162,7 @@ export const EditProfilePage = () => {
                   maxLength="15"
                   pattern="^(?:[0-9]+[a-z]|[a-z]+[0-9])[a-z0-9]*$"
                   name="password"
-                  value={password || ""}
+                  value={password}
                   readOnly
                 />
                 :

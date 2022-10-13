@@ -18,7 +18,7 @@ export const useAuthStore = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("token-init-date", new Date().getTime());
       dispatch(
-        onLogin({ name: data.name, uid: data.uid, google: data.google })
+        onLogin({ name: data.name, uid: data.uid })
       );
 
       Swal.fire("Bienvenido!");
@@ -42,7 +42,7 @@ export const useAuthStore = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("token-init-date", new Date().getTime());
       dispatch(
-        onLogin({ name: data.name, uid: data.uid, google: data.google })
+        onLogin({ name: data.name, uid: data.uid})
       );
       Swal.fire(
         "Usuario creado correctamente",
