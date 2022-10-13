@@ -23,12 +23,14 @@ export const useLogin = () => {
         throw new Error("Could not complete signup");
       }
       const user = res.user;
+    
       setIsPending(false)
       startRegister({
         name: user.name,
         email: user.email,
         password: user.uid,
         avatar: user.photoURL,
+        google:true
       });
     } catch (error) {
       console.log(error);
@@ -47,12 +49,14 @@ export const useLogin = () => {
         throw new Error("Could not complete signup");
       }
       const user = result.user;
+      
       setIsPending(false)
       startRegister({
-        name: user.name,
+        name: user.displayName,
         email: user.email,
         password: user.uid,
         avatar: user.photoURL,
+        google: user.emailVerified
       });
    
     } catch (error) {

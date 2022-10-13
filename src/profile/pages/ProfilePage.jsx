@@ -10,11 +10,11 @@ export const ProfilePage = () => {
     const { startLogout } = useAuthStore();
     const { setUserProfile } = useProfileStore();
     const { profileUser } = useSelector(state => state.profile);
-
     useEffect(() => {
-
+        
         setUserProfile();
     }, []);
+   
 
     return (
         <>
@@ -77,7 +77,7 @@ export const ProfilePage = () => {
                     <hr />
                     <div className="df-col">
                         <p className="text-mr font-color">CONTRASEÑA</p>
-                        <p className='font-c'> ********** </p>
+                        <p className='font-c'> *********************** </p>
                     </div>
                 </div>
             </div>
